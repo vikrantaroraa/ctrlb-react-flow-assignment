@@ -12,12 +12,45 @@ import ReactFlow, {
 
 import "reactflow/dist/style.css";
 import "./App.css";
+import TextUpdaterNode from "./nodes/TextUpdaterNode";
+
+// we define the nodeTypes outside of the component to prevent re-renderings
+// you could also use useMemo inside the component
+const nodeTypes = { textUpdater: TextUpdaterNode };
+
+// const initialNodes = [
+//   { id: "1", position: { x: 0, y: 0 }, data: { label: "Node-1" } },
+//   { id: "2", position: { x: 0, y: 100 }, data: { label: "Node-2" } },
+// ];
+// const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
 
 const initialNodes = [
-  { id: "1", position: { x: 0, y: 0 }, data: { label: "Node-1" } },
-  { id: "2", position: { x: 0, y: 100 }, data: { label: "Node-2" } },
+  {
+    id: "node-1",
+    type: "textUpdater",
+    position: { x: 0, y: 0 },
+    data: { value: 123 },
+  },
+  {
+    id: "node-2",
+    type: "output",
+    targetPosition: "top",
+    position: { x: 0, y: 200 },
+    data: { label: "node 2" },
+  },
+  {
+    id: "node-3",
+    type: "output",
+    targetPosition: "top",
+    position: { x: 200, y: 200 },
+    data: { label: "node 3" },
+  },
 ];
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
+
+const initialEdges = [
+  { id: "edge-1", source: "node-1", target: "node-2", sourceHandle: "a" },
+  { id: "edge-2", source: "node-1", target: "node-3", sourceHandle: "b" },
+];
 
 const flowKey = "current-flow";
 
@@ -140,6 +173,7 @@ const Flow = () => {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          nodeTypes={nodeTypes}
           fitView
         >
           <Controls />
