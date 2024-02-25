@@ -5,6 +5,46 @@
 }
 
 .app {
-  height: 100vh;
-  width: 100vw;
+  /* height: 100%; */
+  width: 100%;
+}
+
+.mainContainer {
+  border: 2px dotted red;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonAndtextAreaContainer {
+  display: flex;
+  height: 26vh;
+  background-color: lightgreen;
+}
+
+.buttonAndtextAreaContainer .textAreaContainer {
+  flex: 1;
+  background-color: red;
+}
+
+.textAreaContainer textarea {
+  height: 100%;
+}
+
+.buttonAndtextAreaContainer .buttonsContainer {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 15px; */
+}
+
+.buttonAndtextAreaContainer button {
+  flex: 1;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.flowContainer {
+  width: 100%;
+  height: 73vh;
+  border: 2px dotted;
 }
