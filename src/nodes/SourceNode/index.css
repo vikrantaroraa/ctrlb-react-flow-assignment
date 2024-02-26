@@ -1,0 +1,22 @@
+.source-node-wrapper {
+  border: 1px solid #eee;
+  padding: 2px;
+  border-radius: 5px;
+  background: white;
+  transform: rotate(55deg);
+}
+
+.source-node {
+  height: 75px;
+  width: 60px;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.source-node .label {
+  transform: rotate(-55deg);
+  color: #868181;
+  font-size: 13px;
+}

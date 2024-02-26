@@ -13,10 +13,22 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import "./App.css";
 import TextUpdaterNode from "./nodes/TextUpdaterNode";
+import CylinderNode from "./nodes/CylinderNode";
+import SourceNode from "./nodes/SourceNode";
+import DestinationNode from "./nodes/DestinationNode";
+import BytesIngested from "./nodes/BytesIngested";
+import BytesStreamed from "./nodes/BytesStreamed";
 
 // we define the nodeTypes outside of the component to prevent re-renderings
 // you could also use useMemo inside the component
-const nodeTypes = { textUpdater: TextUpdaterNode };
+const nodeTypes = {
+  textUpdater: TextUpdaterNode,
+  cylinderNode: CylinderNode,
+  sourceNode: SourceNode,
+  destinationNode: DestinationNode,
+  bytesIngested: BytesIngested,
+  bytesStreamed: BytesStreamed,
+};
 
 // const initialNodes = [
 //   { id: "1", position: { x: 0, y: 0 }, data: { label: "Node-1" } },
@@ -27,29 +39,86 @@ const nodeTypes = { textUpdater: TextUpdaterNode };
 const initialNodes = [
   {
     id: "node-1",
-    type: "textUpdater",
-    position: { x: 0, y: 0 },
-    data: { value: 123 },
+    type: "sourceNode",
+    position: { x: -400, y: 0 },
+    data: { label: "Source" },
   },
   {
     id: "node-2",
-    type: "output",
-    targetPosition: "top",
-    position: { x: 0, y: 200 },
-    data: { label: "node 2" },
+    type: "bytesIngested",
+    position: { x: -250, y: 0 },
+    data: { value: 123 },
   },
   {
     id: "node-3",
-    type: "output",
-    targetPosition: "top",
-    position: { x: 200, y: 200 },
-    data: { label: "node 3" },
+    type: "cylinderNode",
+    position: { x: 0, y: -70 },
+    data: { value: 123 },
   },
+  {
+    id: "node-4",
+    type: "bytesStreamed",
+    position: { x: 250, y: 0 },
+    data: { value: 123 },
+  },
+  {
+    id: "node-5",
+    type: "destinationNode",
+    position: { x: 450, y: 0 },
+    data: { value: 123 },
+  },
+  // {
+  //   id: "node-1",
+  //   type: "textUpdater",
+  //   position: { x: 0, y: 100 },
+  //   data: { value: 123 },
+  // },
+  // {
+  //   id: "node-2",
+  //   type: "output",
+  //   targetPosition: "top",
+  //   position: { x: 0, y: 200 },
+  //   data: { label: "node 2" },
+  // },
+  // {
+  //   id: "node-3",
+  //   type: "output",
+  //   targetPosition: "top",
+  //   position: { x: 200, y: 200 },
+  //   data: { label: "node 3" },
+  // },
 ];
 
 const initialEdges = [
-  { id: "edge-1", source: "node-1", target: "node-2", sourceHandle: "a" },
-  { id: "edge-2", source: "node-1", target: "node-3", sourceHandle: "b" },
+  {
+    id: "e1-2",
+    source: "node-1",
+    target: "node-2",
+    animated: true,
+    style: { stroke: "#2c2c2c" },
+  },
+
+  {
+    id: "e2-3",
+    source: "node-2",
+    target: "node-3",
+    animated: true,
+    style: { stroke: "#2c2c2c" },
+  },
+  {
+    id: "e3-4",
+    source: "node-3",
+    target: "node-4",
+    animated: true,
+    style: { stroke: "#2c2c2c" },
+  },
+  {
+    id: "e4-5",
+    source: "node-4",
+    target: "node-5",
+    animated: true,
+    style: { stroke: "#2c2c2c" },
+  },
 ];
 
 const flowKey = "current-flow";
@@ -186,17 +255,6 @@ const Flow = () => {
 };
 
 export default function App() {
-  // const addNewNodeAndEdge = () => {
-  //   const newNode = {
-  //     id: "3",
-  //     position: { x: 0, y: 300 },
-  //     data: { label: "3" },
-  //   };
-  //   setNodes((prevNodes) => {
-  //     prevNodes, newNode;
-  //   });
-  // };
-
   return (
     <ReactFlowProvider>
       <Flow />
