@@ -5,6 +5,7 @@ import "./index.css";
 const SourceNode = ({ isConnectable }) => {
   const targethandleStyle = {
     left: 65,
+    backgroundColor: "transparent",
   };
 
   return (

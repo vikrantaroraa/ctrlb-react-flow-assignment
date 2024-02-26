@@ -7,9 +7,18 @@
   /* transform: rotate(110deg) skew(20deg); */
 }
 
-.parallelogram {
-  width: 100px;
-  height: 60px;
+.bytes-streamed-wrapper .parallelogram {
+  width: 60px;
+  height: 36px;
   border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* background: rgb(9, 189, 212); */
+}
+
+.bytes-streamed-wrapper .label {
+  transform: skew(-20deg);
+  color: #868181;
+  font-size: 12px;
 }

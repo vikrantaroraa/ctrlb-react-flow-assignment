@@ -5,11 +5,13 @@ import "./index.css";
 const BytesIngested = ({ isConnectable }) => {
   const sourceHandleStyle = {
     left: 0,
-    top: 30,
+    top: 18,
+    backgroundColor: "transparent",
   };
   const targetHandleStyle = {
-    left: 105,
-    top: 30,
+    left: 63,
+    top: 18,
+    backgroundColor: "transparent",
   };
   return (
     <div className="bytes-ingested-wrapper">
@@ -19,7 +21,9 @@ const BytesIngested = ({ isConnectable }) => {
         style={targetHandleStyle}
         isConnectable={isConnectable}
       />
-      <div className="parallelogram"></div>
+      <div className="parallelogram">
+        <span className="label">0 GB</span>
+      </div>
       <Handle
         type="target"
         position={Position.Bottom}
